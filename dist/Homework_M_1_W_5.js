@@ -47,21 +47,58 @@ function weFindTheMaximumFigure(n) {
     }
 }
 document.write("<p>\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0446\u0438\u0444\u0440\u0430: " + weFindTheMaximumFigure(six_digits) + "</p>");
-/*
-document.write (`<p></p>`)
-Задание
-* Во всех заданиях обязательно использовать рекурсию.
-1. Написать функцию возведения числа в степень.
-2. Написать функцию поиска наибольшего общего делителя.
-3. Написать функцию для поиска максимальной цифры в числе.
-4. Написать функцию, которая определяет простое ли пере-
-данное число.
-5. Написать функцию для вывода всех множителей передан-
-ного числа в возрастающем порядке.
-Например: число 18 – множители 2 * 3 * 3.
-6. Написать функцию, которая возвращает число Фибоначчи
-по переданному порядковому номеру.
-Числа Фибоначчи: 1, 1, 2, 3, 5, 8, 13… Ряд основывается на
-том, что каждое число равно сумме двух предыдущих чисел.
-Например: порядковый номер 3 – число 2, порядковый
-*/ 
+document.write("<p>==========================================================================================</p>");
+document.write("<p>4. \u041D\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0444\u0443\u043D\u043A\u0446\u0438\u044E, \u043A\u043E\u0442\u043E\u0440\u0430\u044F \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u044F\u0435\u0442 \u043F\u0440\u043E\u0441\u0442\u043E\u0435 \u043B\u0438 \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0435 \u0447\u0438\u0441\u043B\u043E.</p>");
+var simple_or_not = 5;
+var simple_or_not1 = 6;
+function weIdentifyAPrimeNumber(n, i) {
+    if (i === void 0) { i = 2; }
+    if (n == i && n % i == 0) {
+        return 'Простое число';
+    }
+    else if (n > i && n % i == 0) {
+        return 'Составное число';
+    }
+    else {
+        return weIdentifyAPrimeNumber(n, i + 1);
+    }
+}
+document.write("<p>\u041F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0435 \u0447\u0438\u0441\u043B\u043E " + simple_or_not + " - " + weIdentifyAPrimeNumber(simple_or_not) + "</p>");
+document.write("<p>\u041F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0435 \u0447\u0438\u0441\u043B\u043E " + simple_or_not1 + " - " + weIdentifyAPrimeNumber(simple_or_not1) + "</p>");
+document.write("<p>==========================================================================================</p>");
+document.write("<p>5. \u041D\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0444\u0443\u043D\u043A\u0446\u0438\u044E \u0434\u043B\u044F \u0432\u044B\u0432\u043E\u0434\u0430 \u0432\u0441\u0435\u0445 \u043C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u0435\u0439 \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 \u0432 \u0432\u043E\u0437\u0440\u0430\u0441\u0442\u0430\u044E\u0449\u0435\u043C \u043F\u043E\u0440\u044F\u0434\u043A\u0435.\n\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: \u0447\u0438\u0441\u043B\u043E 18 \u2013 \u043C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u0438 2 * 3 * 3.</p>");
+var factorization = 18;
+var factorization1 = 124;
+var a = [];
+function weDecomposeIntoMultipliers(n, a, i) {
+    if (a === void 0) { a = []; }
+    if (n == i) {
+        //@ts-ignore
+        a.push(n);
+        return a;
+    }
+    else if (n >= i && n % i == 0) {
+        //@ts-ignore
+        a.push(i);
+        return weDecomposeIntoMultipliers(n / i, a, i);
+    }
+    else {
+        return weDecomposeIntoMultipliers(n, a, i + 1);
+    }
+}
+document.write("<p>\u041C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u0438 \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 " + factorization + " - " + weDecomposeIntoMultipliers(factorization, a = [], 2).join('*') + "</p>");
+document.write("<p>\u041C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u0438 \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 " + factorization1 + " - " + weDecomposeIntoMultipliers(factorization1, a = [], 2).join('*') + "</p>");
+document.write("<p>==========================================================================================</p>");
+document.write("<p>6. \u041D\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0444\u0443\u043D\u043A\u0446\u0438\u044E, \u043A\u043E\u0442\u043E\u0440\u0430\u044F \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0447\u0438\u0441\u043B\u043E \u0424\u0438\u0431\u043E\u043D\u0430\u0447\u0447\u0438\n\u043F\u043E \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u043D\u043E\u043C\u0443 \u043F\u043E\u0440\u044F\u0434\u043A\u043E\u0432\u043E\u043C\u0443 \u043D\u043E\u043C\u0435\u0440\u0443.\n\u0427\u0438\u0441\u043B\u0430 \u0424\u0438\u0431\u043E\u043D\u0430\u0447\u0447\u0438: 1, 1, 2, 3, 5, 8, 13\u2026 \u0420\u044F\u0434 \u043E\u0441\u043D\u043E\u0432\u044B\u0432\u0430\u0435\u0442\u0441\u044F \u043D\u0430\n\u0442\u043E\u043C, \u0447\u0442\u043E \u043A\u0430\u0436\u0434\u043E\u0435 \u0447\u0438\u0441\u043B\u043E \u0440\u0430\u0432\u043D\u043E \u0441\u0443\u043C\u043C\u0435 \u0434\u0432\u0443\u0445 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0445 \u0447\u0438\u0441\u0435\u043B.\n\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: \u043F\u043E\u0440\u044F\u0434\u043A\u043E\u0432\u044B\u0439 \u043D\u043E\u043C\u0435\u0440 3 \u2013 \u0447\u0438\u0441\u043B\u043E 2, \u043F\u043E\u0440\u044F\u0434\u043A\u043E\u0432\u044B\u0439 \u043D\u043E\u043C\u0435\u0440 6 \u2013 \u0447\u0438\u0441\u043B\u043E 8.</p>");
+var numFib = 5;
+var numFib1 = 10;
+function calculateTheFibonacciNumber(n) {
+    if (n <= 1) {
+        return n;
+    }
+    else {
+        return calculateTheFibonacciNumber(n - 1) + calculateTheFibonacciNumber(n - 2);
+    }
+}
+document.write("<p>\u041D\u0430\u0445\u043E\u0434\u0438\u043C \u043F\u043E \u043F\u043E\u0440\u044F\u0434\u043A\u043E\u0432\u043E\u043C\u0443 \u043D\u043E\u043C\u0435\u0440\u0443 " + numFib + " \u0447\u0438\u0441\u043B\u043E \u0444\u0438\u0431\u043E\u043D\u0430\u0447\u0447\u0438 " + calculateTheFibonacciNumber(numFib) + "</p>");
+document.write("<p>\u041D\u0430\u0445\u043E\u0434\u0438\u043C \u043F\u043E \u043F\u043E\u0440\u044F\u0434\u043A\u043E\u0432\u043E\u043C\u0443 \u043D\u043E\u043C\u0435\u0440\u0443 " + numFib1 + " \u0447\u0438\u0441\u043B\u043E \u0444\u0438\u0431\u043E\u043D\u0430\u0447\u0447\u0438 " + calculateTheFibonacciNumber(numFib1) + "</p>");
